@@ -1,0 +1,28 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/thiwanka/ros2_learning/install/urdfRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/urdfDifferentialRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/robot_controller/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/lifecyleNode/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/build/gazeboRobot",
+        "/home/thiwanka/ros2_learning/install/gazeboRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/build/actionExample",
+        "/home/thiwanka/ros2_learning/install/actionExample/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/custom_interfaces/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/cameraFeed/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/thiwanka/ros2_learning/install/urdfRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/urdfDifferentialRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/robot_controller/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/lifecyleNode/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/build/gazeboRobot",
+        "/home/thiwanka/ros2_learning/install/gazeboRobot/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/build/actionExample",
+        "/home/thiwanka/ros2_learning/install/actionExample/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/custom_interfaces/lib/python3.12/site-packages",
+        "/home/thiwanka/ros2_learning/install/cameraFeed/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ]
+}
