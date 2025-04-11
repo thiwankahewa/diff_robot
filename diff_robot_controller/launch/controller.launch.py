@@ -1,8 +1,27 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction
+from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import UnlessCondition, IfCondition
+
+
+def noisy_controller(context, *args, **kwargs):
+    use_sim_time = LaunchConfiguration("use_sim_time")
+    wheel_radius = float(LaunchConfiguration("wheel_radius").perform(context))
+    wheel_radius_error = float(LaunchConfiguration("wheel_radius_error").perform(context))
+
+    noisy_controller= Node(
+        package="diff_robot_controller",
+        executable="noisy_controller.py",
+        parameters=[
+            {"wheel_radius": wheel_radius + wheel_radius_error,
+             "use_sim_time": use_sim_time}],
+    )
+
+    return [
+        noisy_controller
+    ]
+
 
 
 def generate_launch_description():
@@ -23,6 +42,11 @@ def generate_launch_description():
     wheel_separation_arg = DeclareLaunchArgument(
         "wheel_separation",
         default_value="0.17",
+    )
+    
+    wheel_radius_error_arg = DeclareLaunchArgument(
+        "wheel_radius_error",
+        default_value="0.005",
     )
     
     use_sim_time = LaunchConfiguration("use_sim_time")
@@ -72,6 +96,10 @@ def generate_launch_description():
             )
         ]
     )
+    
+    # Launch the node using an OpaqueFunction to dynamically configure parameters
+    noisy_controller_launch = OpaqueFunction(function=noisy_controller)
+
 
     return LaunchDescription(
         [
@@ -79,8 +107,10 @@ def generate_launch_description():
             use_simple_controller_arg,
             wheel_radius_arg,
             wheel_separation_arg,
+            wheel_radius_error_arg,
             joint_state_broadcaster_spawner,
             wheel_controller_spawner,
             simple_controller,
+            noisy_controller_launch
         ]
     )
