@@ -2,8 +2,13 @@
 
 <robot name="diff_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Start GZ or Ignition depending on ROS 2 Version -->
+  <xacro:arg name="is_ignition" default="true"/>
+
   <!-- Include Gazebo Parameters -->
   <xacro:include filename="$(find diff_robot_description)/urdf/gazebo.xacro" />
+
+  <xacro:include filename="$(find diff_robot_description)/urdf/diff_robot_ros2_control.xacro" />
 
 
   <link name="base_footprint"/>

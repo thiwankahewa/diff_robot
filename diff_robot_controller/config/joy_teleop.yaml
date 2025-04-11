@@ -1,0 +1,16 @@
+joy_teleop:
+  ros__parameters:
+    move:
+      type: topic  # Specifies the type of communication, here it is a ROS topic.
+      interface_type: geometry_msgs/msg/TwistStamped  # Defines the message type used for the topic.
+      topic_name: diff_robot_controller/cmd_vel  # The name of the topic to publish the commands to.
+      deadman_buttons: [5]  # List of buttons that must be held down to enable movement.
+      axis_mappings:
+      twist-linear-x: 
+        axis: 1 
+        scale: 1.0  
+        offset: 0.0  
+      twist-angular-z:  
+        axis: 3  
+        scale: 8.0  
+        offset: 0.0  

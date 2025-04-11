@@ -1,0 +1,8 @@
+joystick:
+  ros__parameters:
+    device_id: 0                # ID of the joystick device
+    device_name: ""             # Name of the joystick device (empty for default)
+    deadzone: 0.5               # Deadzone threshold for joystick axes
+    autorepeat_rate: 20.0       # Rate at which buttons are autorepeated (in Hz)
+    sticky_buttons: false       # Whether buttons should remain pressed until released
+    coalesce_interval_ms: 1     # Interval for coalescing events (in milliseconds)
