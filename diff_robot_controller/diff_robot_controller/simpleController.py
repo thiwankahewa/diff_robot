@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TwistStamped
 import numpy as np
 
 
@@ -20,7 +20,7 @@ class SimpleController(Node):
         self.get_logger().info("Using wheel separation %f" % self.wheel_separation_)
 
         self.wheel_cmd_pub_ = self.create_publisher(Float64MultiArray, "simple_velocity_controller/commands", 10)
-        self.vel_sub_ = self.create_subscription(Twist, "turtle1/cmd_vel", self.velCallback, 10)
+        self.vel_sub_ = self.create_subscription(TwistStamped, "diff_robot_controller/cmd_vel", self.velCallback, 10)
 
         self.speed_conversion_ = np.array([[self.wheel_radius_/2, self.wheel_radius_/2],
                                            [self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_]])
