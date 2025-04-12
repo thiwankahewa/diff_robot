@@ -56,8 +56,6 @@ class SimpleController(Node):
         self.transform_stamped_.child_frame_id = "base_footprint"
         
     def velCallback(self, msg):
-        # Implements the differential kinematic model
-        # Given v and w, calculate the velocities of the wheels
         robot_speed = np.array([[msg.twist.linear.x],
                                 [msg.twist.angular.z]])
         wheel_speed = np.matmul(np.linalg.inv(self.speed_conversion_), robot_speed) 
