@@ -73,6 +73,7 @@ def generate_launch_description():
         ],
         condition=UnlessCondition(use_simple_controller),
     )
+    
 
     simple_controller = GroupAction(
         condition=IfCondition(use_simple_controller),
@@ -90,9 +91,8 @@ def generate_launch_description():
                 executable="simpleController.py",
                 parameters=[
                     {"wheel_radius": wheel_radius,
-                    "wheel_separation": wheel_separation,
-                    "use_sim_time": use_sim_time}],
-            
+                     "wheel_separation": wheel_separation,
+                     "use_sim_time": use_sim_time}],
             )
         ]
     )
