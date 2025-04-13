@@ -6,7 +6,6 @@ from launch.conditions import UnlessCondition, IfCondition
 
 
 def noisy_controller(context, *args, **kwargs):
-    use_sim_time = LaunchConfiguration("use_sim_time")
     wheel_radius = float(LaunchConfiguration("wheel_radius").perform(context))
     wheel_radius_error = float(LaunchConfiguration("wheel_radius_error").perform(context))
 
@@ -14,8 +13,7 @@ def noisy_controller(context, *args, **kwargs):
         package="diff_robot_controller",
         executable="noisy_controller.py",
         parameters=[
-            {"wheel_radius": wheel_radius + wheel_radius_error,
-             "use_sim_time": use_sim_time}],
+            {"wheel_radius": wheel_radius + wheel_radius_error}],
     )
 
     return [
