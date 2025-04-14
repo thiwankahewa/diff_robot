@@ -18,7 +18,7 @@ find_package(tf2 REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
 install(
-  DIRECTORY launch config
+  DIRECTORY launch config rviz
   DESTINATION share/${PROJECT_NAME}
 )
 

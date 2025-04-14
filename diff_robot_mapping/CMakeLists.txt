@@ -18,7 +18,7 @@ find_package(tf2 REQUIRED)
 ament_python_install_package(${PROJECT_NAME})
 
 install(
-  DIRECTORY maps
+  DIRECTORY maps config launch rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
