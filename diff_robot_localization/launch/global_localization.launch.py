@@ -3,13 +3,16 @@ from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+import os
+
 
 
 def generate_launch_description():
 
     map_name = LaunchConfiguration("map_name")
     use_sim_time = LaunchConfiguration("use_sim_time")
-    lifecycle_nodes = ["map_server"]
+    amcl_config = LaunchConfiguration("amcl_config")
+    lifecycle_nodes = ["map_server", "amcl"]
 
     map_name_arg = DeclareLaunchArgument(
         "map_name",
@@ -19,6 +22,16 @@ def generate_launch_description():
     use_sim_time_arg = DeclareLaunchArgument(
         "use_sim_time",
         default_value="true"
+    )
+    
+    amcl_config_arg = DeclareLaunchArgument(
+        "amcl_config",
+        default_value=os.path.join(
+            get_package_share_directory("diff_robot_localization"),
+            "config",
+            "amcl.yaml"
+        ),
+        description="Full path to amcl yaml file to load"
     )
 
     map_path = PathJoinSubstitution([
@@ -38,6 +51,18 @@ def generate_launch_description():
             {"use_sim_time": use_sim_time}
         ],
     )
+    
+    nav2_amcl = Node(
+        package="nav2_amcl",
+        executable="amcl",
+        name="amcl",
+        output="screen",
+        emulate_tty=True,
+        parameters=[
+            amcl_config,
+            {"use_sim_time": use_sim_time},
+        ],
+    )
 
     nav2_lifecycle_manager = Node(
         package="nav2_lifecycle_manager",
@@ -54,6 +79,8 @@ def generate_launch_description():
     return LaunchDescription([
         map_name_arg,
         use_sim_time_arg,
+        amcl_config_arg,
         nav2_map_server,  
+        nav2_amcl,
         nav2_lifecycle_manager,
     ])
