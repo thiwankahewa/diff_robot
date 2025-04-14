@@ -24,5 +24,6 @@
         "/home/thiwanka/ros2_learning/install/custom_interfaces/lib/python3.12/site-packages",
         "/home/thiwanka/ros2_learning/install/cameraFeed/lib/python3.12/site-packages",
         "/opt/ros/jazzy/lib/python3.12/site-packages"
-    ]
+    ],
+    "ros.distro": "jazzy"
 }
