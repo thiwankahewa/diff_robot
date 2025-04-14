@@ -76,8 +76,12 @@ class NoisyController(Node):
         self.prev_time_ = Time.from_msg(msg.header.stamp)
 
         # Calculate the rotational speed of each wheel
-        fi_left = dp_left / (dt.nanoseconds / S_TO_NS)
-        fi_right = dp_right / (dt.nanoseconds / S_TO_NS)
+        if dt.nanoseconds != 0:
+            fi_left = dp_left / (dt.nanoseconds / S_TO_NS)
+            fi_right = dp_right / (dt.nanoseconds / S_TO_NS)
+        else:
+            fi_left = 0.0
+            fi_right = 0.0
 
         # Calculate the linear and angular velocity
         linear = (self.wheel_radius_ * fi_right + self.wheel_radius_ * fi_left) / 2
