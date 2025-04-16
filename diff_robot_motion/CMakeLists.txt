@@ -19,7 +19,7 @@ ament_python_install_package(${PROJECT_NAME})
 
 install(PROGRAMS
   ${PROJECT_NAME}/pd_motion_planner.py
-  #${PROJECT_NAME}/pure_pursuit.py
+  ${PROJECT_NAME}/pure_pursuit.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
