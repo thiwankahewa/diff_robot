@@ -15,6 +15,7 @@ find_package(tf2_ros REQUIRED)
 
 install(PROGRAMS
   ${PROJECT_NAME}/dijkstra_planner.py
+  ${PROJECT_NAME}/a_star_planner.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
