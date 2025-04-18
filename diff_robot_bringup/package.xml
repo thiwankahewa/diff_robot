@@ -16,6 +16,7 @@
   <exec_depend>diff_robot_localization</exec_depend>
   <exec_depend>diff_robot_mapping</exec_depend>
   <exec_depend>diff_robot_firmware</exec_depend>
+  <exec_depend>diff_robot_navigation</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
