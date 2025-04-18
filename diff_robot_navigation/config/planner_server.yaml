@@ -10,7 +10,7 @@ planner_server:
 
     # A* Planner parameters
     GridBasedFast:
-      plugin: "bumperbot_planning::AStarPlanner"
+      plugin: "diff_robot_planning::AStarPlanner"
 
 global_costmap:
   global_costmap:

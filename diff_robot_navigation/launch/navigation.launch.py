@@ -12,7 +12,7 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration("use_sim_time")
     lifecycle_nodes = ["controller_server", "planner_server", "smoother_server"]
-    bumperbot_navigation_pkg = get_package_share_directory("diff_robot_navigation")
+    diff_robot_navigation_pkg = get_package_share_directory("diff_robot_navigation")
 
     use_sim_time_arg = DeclareLaunchArgument(
         "use_sim_time",
@@ -25,7 +25,7 @@ def generate_launch_description():
         output="screen",
         parameters=[
             os.path.join(
-                bumperbot_navigation_pkg,
+                diff_robot_navigation_pkg,
                 "config",
                 "controller_server.yaml"),
             {"use_sim_time": use_sim_time}
@@ -39,7 +39,7 @@ def generate_launch_description():
         output="screen",
         parameters=[
             os.path.join(
-                bumperbot_navigation_pkg,
+                diff_robot_navigation_pkg,
                 "config",
                 "planner_server.yaml"),
             {"use_sim_time": use_sim_time}
@@ -53,7 +53,7 @@ def generate_launch_description():
         output="screen",
         parameters=[
             os.path.join(
-                bumperbot_navigation_pkg,
+                diff_robot_navigation_pkg,
                 "config",
                 "smoother_server.yaml"),
             {"use_sim_time": use_sim_time}

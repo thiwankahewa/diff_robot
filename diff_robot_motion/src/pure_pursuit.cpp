@@ -5,7 +5,7 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "diff_robot_motion/pure_pursuit.hpp"
 
-namespace bumperbot_motion
+namespace diff_robot_motion
 {
 void PurePursuit::configure(
   const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
@@ -156,4 +156,4 @@ bool PurePursuit::transformPlan(const std::string & frame)
 }  // namespace bumperbot_motion
 
 #include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(bumperbot_motion::PurePursuit, nav2_core::Controller)
+PLUGINLIB_EXPORT_CLASS(diff_robot_motion::PurePursuit, nav2_core::Controller)

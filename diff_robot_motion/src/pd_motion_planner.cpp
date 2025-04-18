@@ -5,7 +5,7 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "diff_robot_motion/pd_motion_planner.hpp"
 
-namespace bumperbot_motion
+namespace diff_robot_motion
 {
 void PDMotionPlanner::configure(
   const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
@@ -161,4 +161,4 @@ bool PDMotionPlanner::transformPlan(const std::string & frame)
 }  // namespace bumperbot_motion
 
 #include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(bumperbot_motion::PDMotionPlanner, nav2_core::Controller)
+PLUGINLIB_EXPORT_CLASS(diff_robot_motion::PDMotionPlanner, nav2_core::Controller)

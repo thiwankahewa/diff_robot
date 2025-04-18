@@ -3,7 +3,7 @@
 
 #include "diff_robot_planning/dijkstra_planner.hpp"
 
-namespace bumperbot_planning
+namespace diff_robot_planning
 {
 
 void DijkstraPlanner::configure(
@@ -149,4 +149,4 @@ unsigned int DijkstraPlanner::poseToCell(const GraphNode & node)
 }  // namespace bumperbot_planning
 
 #include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(bumperbot_planning::DijkstraPlanner, nav2_core::GlobalPlanner)
+PLUGINLIB_EXPORT_CLASS(diff_robot_planning::DijkstraPlanner, nav2_core::GlobalPlanner)

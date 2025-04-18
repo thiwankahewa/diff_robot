@@ -18,7 +18,7 @@
 #include "nav2_core/goal_checker.hpp"
 #include "nav2_costmap_2d/costmap_2d_ros.hpp"
 
-namespace bumperbot_motion
+namespace diff_robot_motion
 {
 class PurePursuit : public nav2_core::Controller
 {

@@ -2,7 +2,7 @@
 
 #include "diff_robot_planning/a_star_planner.hpp"
 
-namespace bumperbot_planning
+namespace diff_robot_planning
 {
 void AStarPlanner::configure(
   const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
@@ -156,4 +156,4 @@ unsigned int AStarPlanner::poseToCell(const GraphNode & node)
 }  // namespace bumperbot_planning
 
 #include "pluginlib/class_list_macros.hpp"
-PLUGINLIB_EXPORT_CLASS(bumperbot_planning::AStarPlanner, nav2_core::GlobalPlanner)
+PLUGINLIB_EXPORT_CLASS(diff_robot_planning::AStarPlanner, nav2_core::GlobalPlanner)
