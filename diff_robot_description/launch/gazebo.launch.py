@@ -30,8 +30,8 @@ def generate_launch_description():
         ]
     )
     
-    model_path = str(Path(diff_robot_description_dir).parent.resolve())
-    model_path += pathsep + os.path.join(get_package_share_directory("diff_robot_description"), 'models')
+    model_path = str(Path(diff_robot_description_dir).parent.resolve())   #return the parent directory as a string
+    model_path += pathsep + os.path.join(get_package_share_directory("diff_robot_description"), 'models')  #models for worlds
 
     gazebo_resource_path = SetEnvironmentVariable(
         "GZ_SIM_RESOURCE_PATH",
@@ -52,7 +52,7 @@ def generate_launch_description():
         value_type=str
     )
 
-    robot_state_publisher_node = Node(
+    robot_state_publisher_node = Node(    # takes joint states updates, does transformations, and then publishes the results on the tf2 topics.
         package="robot_state_publisher",
         executable="robot_state_publisher",
         parameters=[{"robot_description": robot_description,

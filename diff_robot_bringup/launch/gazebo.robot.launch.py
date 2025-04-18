@@ -9,13 +9,13 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     
+    use_slam = LaunchConfiguration("use_slam")
     
     use_slam_arg = DeclareLaunchArgument(
         "use_slam",
         default_value="false"
     )
     
-    use_slam = LaunchConfiguration("use_slam")
     
     gazebo = IncludeLaunchDescription(
         os.path.join(
@@ -47,13 +47,6 @@ def generate_launch_description():
         }.items()
     )
     
-    safety_stop = Node(
-        package="diff_robot_utils",
-        executable="safety_stop.py",
-        output="screen",
-        parameters=[{"use_sim_time": True}]
-    )
-    
     localization = IncludeLaunchDescription(
         os.path.join(
             get_package_share_directory("diff_robot_localization"),
@@ -78,6 +71,7 @@ def generate_launch_description():
             "launch",
             "navigation.launch.py"
         ),
+        condition=UnlessCondition(use_slam)
     )
 
     rviz = Node(
@@ -90,7 +84,22 @@ def generate_launch_description():
             )
         ],
         output="screen",
-        parameters=[{"use_sim_time": True}]
+        parameters=[{"use_sim_time": True}],
+        condition=UnlessCondition(use_slam)
+    )
+    
+    rviz_slam = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=["-d", os.path.join(
+                get_package_share_directory("diff_robot_mapping"),
+                "rviz",
+                "slam.rviz"
+            )
+        ],
+        output="screen",
+        parameters=[{"use_sim_time": True}],
+        condition=IfCondition(use_slam)
     )
 
 
@@ -100,9 +109,9 @@ def generate_launch_description():
         gazebo,
         controller,
         joystick,
-        safety_stop,
         localization,
         slam,
         navigation,
         rviz,
+        rviz_slam
     ])
