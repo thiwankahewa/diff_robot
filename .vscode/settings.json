@@ -25,5 +25,6 @@
         "/home/thiwanka/ros2_learning/install/cameraFeed/lib/python3.12/site-packages",
         "/opt/ros/jazzy/lib/python3.12/site-packages"
     ],
-    "ros.distro": "jazzy"
+    "ros.distro": "jazzy",
+    "cmake.sourceDirectory": "/home/thiwanka/diff_robot/src/diff_robot_motion"
 }
